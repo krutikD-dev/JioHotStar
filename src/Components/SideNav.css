@@ -1,5 +1,5 @@
 .sideBar{
-    width: 100px;
+    /* width: 100px; */
     position: fixed;
     top: 0;
     left: 0;
@@ -12,7 +12,8 @@
     background: transparent;
     overflow: hidden;
     transition: width 0.3s ease;
-    /* position: relative; */
+    background: linear-gradient(
+90deg, rgba(15, 16, 20, .95) 40.24%, rgba(15, 16, 20, 0) 101.46%);
 }
 .hotLogo{
     width: 51px;
@@ -54,9 +55,22 @@ li{
     margin-left: 19px;
     margin-right: 22px;
 }
-.navItem-txt{
+/* .navItem-txt{
     display: none;
-}
+} */
 .navItems>li>a:hover{
     color: #fff;
+}
+
+
+.navItem-txt {
+  opacity: 0;
+  transform: translateX(-15px);
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.navItems:hover .navItem-txt {
+  opacity: 1;
+  transform: translateX(0);
 }

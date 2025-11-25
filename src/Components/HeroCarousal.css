@@ -1,0 +1,150 @@
+.hero-carousel-container {
+  position: relative;
+  width: 100%;
+  height: 550px;
+}
+
+.hero-image {
+  position: relative;
+  width: 100%;
+  height: 60vh;
+  background-size: cover;
+  background-position: center;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.content {
+  position: absolute;
+  bottom: -22%;
+  left: 4%;
+  transform: translateY(-50%);
+  color: white;
+  max-width: 50%;
+  z-index: 10;
+  text-align: justify;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 15px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.meta {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  opacity: 0.8;
+}
+
+.description {
+  font-size: 1rem;
+  line-height: 1.5;
+  max-height: 4.5em; /* Limit the height to 3 lines */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  opacity: 0.9;
+  margin-bottom: 20px;
+}
+
+.tags {
+  margin-bottom: 20px;
+}
+
+.tag {
+  background-color: rgba(255, 255, 255, 0.3);
+  padding: 8px 15px;
+  margin-right: 10px;
+  border-radius: 30px;
+  font-size: 0.9rem;
+  display: inline-block;
+}
+
+.buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.subscribe-btn,
+.plus-btn {
+  padding: 12px 30px;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.subscribe-btn {
+  background-color: #1a73e8;
+}
+
+.plus-btn {
+  background-color: rgba(255, 255, 255, 0.15);
+  border: 1px solid #aaa;
+  font-size: 1.6rem;
+  padding: 12px;
+  width: 50px;
+  height: 50px;
+}
+
+.subscribe-btn:hover {
+  background-color: #1665cc;
+}
+
+.plus-btn:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.carousel .carousel-slider {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.carousel .carousel-root {
+  max-width: 100%;
+  width: 100%;
+}
+
+.control-dots {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .content {
+    max-width: 70%;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .meta {
+    font-size: 1rem;
+  }
+
+  .description {
+    font-size: 0.9rem;
+  }
+
+  .buttons {
+    flex-direction: column;
+  }
+
+  .subscribe-btn {
+    font-size: 0.9rem;
+  }
+
+  .plus-btn {
+    font-size: 1.2rem;
+  }
+}

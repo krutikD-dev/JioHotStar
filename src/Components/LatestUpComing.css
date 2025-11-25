@@ -22,11 +22,15 @@
     background: linear-gradient(270deg, #0f1014 0%, rgba(15, 16, 20, .7) 3.39%, rgba(15, 16, 20, -10.6) 16.5%, rgba(15, 16, 20, .1) 28.05%, rgba(15, 16, 20, .1) 28.06%, rgba(15, 16, 20, 0) 100%);
 }
 .advertisementDetailCard{
-    padding: 20px 16px;
+    padding: 2rem 1.5rem;
     height: 251px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+}
+.sqr-HotStar{
+    width: 3rem;
+    height: 3rem;
 }
 .flex-item-center{
     display: flex;
@@ -36,21 +40,23 @@
 }
 .flex-item-center p{
     margin: 0;
-    font-size: 1.1rem;
+    font-size: 1rem;
 }
 .flex-item-center span{
-    font-size: 1rem;
+    font-size: .9rem;
     color: #8f98b2;
 }
 .ad-txt{
-    font-size: 1.1rem;
+    font-size: 1rem;
+    color: #e1e6f0;
 }
 .advertisement-btn{
-    padding: .7rem 4rem;
+    padding: .75rem 4rem;
     border-radius: 8px;
     background: #252833;
     border: none;
     color: #fff;
     font-weight: 600;
     line-height: 2rem;
+    font-size: 1.1rem;
 }

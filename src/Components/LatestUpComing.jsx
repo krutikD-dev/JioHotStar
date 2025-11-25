@@ -14,7 +14,7 @@ function LatestUpComing() {
                 <div className="advertisementDetailCard">
                     <div>
                         <div className="flex-item-center">
-                            <img src={hotStar} alt="" width={40} height={40} />
+                            <img src={hotStar} alt="" className='sqr-HotStar' />
                             <div>
                                 <p className="small-text">
                                     IND vs SA, 2nd Test
@@ -25,7 +25,7 @@ function LatestUpComing() {
                         <p className='ad-txt'>Team India face off World Test Champions</p>
                     </div>
                     <div>
-                                            <button className='advertisement-btn'>Explore</button>
+                        <button className='advertisement-btn'>Explore</button>
 
                     </div>
                 </div>
