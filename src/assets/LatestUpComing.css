@@ -1,0 +1,56 @@
+.advertiseBanner{
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+        margin: 12px 0;
+}
+.advertiseBanner>span{
+    height: 251px;
+    position: relative;
+
+}
+.advertiseBanner>span>img{
+    height: 100%;
+    border-radius: 12px;
+}
+.advertiseImg-overlay{
+   position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(270deg, #0f1014 0%, rgba(15, 16, 20, .7) 3.39%, rgba(15, 16, 20, -10.6) 16.5%, rgba(15, 16, 20, .1) 28.05%, rgba(15, 16, 20, .1) 28.06%, rgba(15, 16, 20, 0) 100%);
+}
+.advertisementDetailCard{
+    padding: 20px 16px;
+    height: 251px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.flex-item-center{
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    gap: 8px;
+}
+.flex-item-center p{
+    margin: 0;
+    font-size: 1.1rem;
+}
+.flex-item-center span{
+    font-size: 1rem;
+    color: #8f98b2;
+}
+.ad-txt{
+    font-size: 1.1rem;
+}
+.advertisement-btn{
+    padding: .7rem 4rem;
+    border-radius: 8px;
+    background: #252833;
+    border: none;
+    color: #fff;
+    font-weight: 600;
+    line-height: 2rem;
+}
