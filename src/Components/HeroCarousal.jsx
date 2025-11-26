@@ -27,17 +27,19 @@ const HeroCarousal = () => {
   }
 
   return (
-    <div className="hero-carousel-container">
+    <div className="hero-carousel-container"  > 
       <Carousel
         autoPlay={true}
-        transitionTime={300}
+        transitionTime={1000}
         infiniteLoop={true}
         showThumbs={false}
         showStatus={false}
         dynamicHeight={false}
-        swipeable={true}
+        swipeable={false}
         renderArrowNext={() => null}
         renderArrowPrev={() => null}
+        animationHandler={'fade'}
+        stopOnHover={false}
       >
         {popularMovies.map((movie) => (
           <div className="carousel-slide" key={movie.id}>
@@ -69,7 +71,7 @@ const HeroCarousal = () => {
                     : "Genres unavailable"}
                 </div>
                 <div className="buttons">
-                  <button className="subscribe-btn">▶ Subscribe to Watch</button>
+                  <button className="subscribe-btn">▶  Watch Now</button>
                   <button className="plus-btn">+</button>
                 </div>
               </div>
