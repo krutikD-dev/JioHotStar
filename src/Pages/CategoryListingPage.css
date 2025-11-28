@@ -4,7 +4,6 @@
   /* margin-left: 112px; */
 }
 
-/* Title same spacing logic as Search */
 .category-title {
   color: #fff;
   font-size: 1.6rem;
@@ -12,14 +11,12 @@
   text-align: center;
 }
 
-/* ✅ SAME grid logic as SearchPage */
 .category-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
   gap: 45px;
 }
 
-/* Loading */
 .category-loading {
   color: #fff;
   text-align: center;
