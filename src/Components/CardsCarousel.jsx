@@ -1,11 +1,11 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import './CardsCarousel.css'
+import MoviesRow from "./MoviesRow";
 
-function CardsCarousel() {
+function CardsCarousel({ movies }) {
   return (
     <>
-      <div className="cardsCarousel-Container">
-        <h2>hello World</h2>
-      </div>
+          <MoviesRow title="Action Extravaganza" movies={movies} />
     </>
   )
 }

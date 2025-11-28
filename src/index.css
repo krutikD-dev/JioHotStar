@@ -8,3 +8,4 @@ body{
   padding: 0;
   color: aliceblue;
 }
+body, html { overflow-x: hidden; }

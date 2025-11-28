@@ -1,5 +1,13 @@
-.main-container{
-    flex-grow: 1;
-    margin-left: 112px;
-    min-height: 90vh;
+.main-container {
+  margin-left: 112px;
+  min-height: 90vh;
+  width: calc(100vw - 112px);
+  overflow: visible;
+  position: relative;
+}
+.latest-release-section {
+  overflow: visible !important;
+  position: relative;
+  z-index: 1;
+  /* margin: 50px 0; */
 }

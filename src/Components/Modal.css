@@ -1,0 +1,176 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #000000D9;
+  /* backdrop-filter: blur(0); */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+}
+
+.modal {
+  background: #16181f;
+  border-radius: 12px;
+  padding: 10px 30px 25px 30px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+  width: 950px;
+  height: 472px;
+  animation: fadeIn 0.2s ease;
+  position: relative;
+}
+
+.modal h2 {
+    font-size: 1.8rem;
+  text-align: center;
+  margin: 6px;
+}
+.modal> .modal-header >span{
+  text-align: center;
+  color: #8f98b2;
+}
+.modal-header{
+  display: flex;
+  flex-direction: column;
+}
+.modal-flex{
+  display: flex;
+  height: auto;
+  margin: 60px 0;
+  justify-content: center;
+}
+.w-1{
+  background: linear-gradient(180deg,rgba(112,122,148,0),#707a94 50%,rgba(112,122,148,0));
+  width: 1px;
+  /* justify-content: center; */
+  display: flex;
+  align-items: center;
+  position: relative;
+  font-weight: 600;
+  color: #8f98b2;
+  letter-spacing: 1.2px;
+  line-height: 24px;
+}
+.ssjks{
+  background-color:#16181f;
+  border-radius: 50%;
+  padding: 12px;
+  position: absolute;
+  left: -22px;
+}
+.modal-separator{
+    height: 100%;
+    width: 183px;
+    display: flex;
+    padding:0 5.6rem 0 5.6rem;
+    height: 249px;
+}
+.qr-section{
+  width: 320px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center ;
+}
+.qr-instruction{
+  color: #8f98b2;
+  margin: 0;
+  font-size: 18px;
+  text-align: center;
+  -webkit-line-clamp: 1;
+  padding: 0 12px;
+}
+.qr-txt{
+  color: #E1E6F0;
+  margin: 20px 0 4px;
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.wrap-knkjn{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* gap: 15px; */
+}
+
+.dummy-numberField{
+  padding: 18px 20px;
+  margin-right: 12px;
+  border: 1px solid #4b5166;
+  border-radius: 8px;
+  height: 100%;
+}
+
+.number-login-section{
+  width: 320px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: #8f98b2;
+}
+
+.number-login-section>.wrp-clldf>p{
+  text-align: justify;
+  font-size: 14px;
+  color: #707a94;
+}
+.number-login-section>.wrp-clldf>p>a{
+  color: #8f98b2;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.number-login-section a{
+  color: #1492ff;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.closeIcon{
+    right: 25px;
+    top: 25px;
+    position: absolute;
+    font-size: 24px;
+    color: #8f98b2;
+}
+
+.otp-section>h2{
+  font-size: 18px;
+  color: #E1E6F0;
+  text-align: left;
+}
+.otp-section>p{
+  font-size: 14px;
+  color: #8f98b2;
+}
+
+.otp-device>span{
+  color: #1492ff;
+  font-size: 14px;
+  margin-right: 12px;
+  font-weight: 600;
+}
+.otp-device>span>i{
+  margin-right: 5px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+@media (width < 481px) {
+  .modal-overlay{
+    padding: 22px;
+  }
+}
+

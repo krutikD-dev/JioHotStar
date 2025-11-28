@@ -1,0 +1,56 @@
+.category-section {
+  margin: 40px 0;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+.section-header h2 {
+  font-size: 22px;
+}
+
+.view-all {
+  font-size: 14px;
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+.category-grid11 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+
+
+
+.category-tile {
+  height: 140px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #24303f, #1a1d29);
+  position: relative;
+  padding: 20px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.category-tile:hover {
+  transform: scale(1.05);
+}
+
+.tile-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at top right, rgba(255,255,255,0.08), transparent 60%);
+  border-radius: 10px;
+}
+
+.category-tile h3 {
+  position: absolute;
+  bottom: 18px;
+  left: 18px;
+  font-size: 22px;
+}

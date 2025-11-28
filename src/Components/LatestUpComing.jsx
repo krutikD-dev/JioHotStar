@@ -8,13 +8,13 @@ function LatestUpComing() {
         <>
             <div className="advertiseBanner">
                 <span>
-                    <img src={IndvsSA} alt="" />
+                    <img src={IndvsSA} alt="" loading='lazy'/>
                     <div className="advertiseImg-overlay"></div>
                 </span>
                 <div className="advertisementDetailCard">
                     <div>
                         <div className="flex-item-center">
-                            <img src={hotStar} alt="" className='sqr-HotStar' />
+                            <img src={hotStar} alt="" className='sqr-HotStar' loading='lazy'/>
                             <div>
                                 <p className="small-text">
                                     IND vs SA, 2nd Test

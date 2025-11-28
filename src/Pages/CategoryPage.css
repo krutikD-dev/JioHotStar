@@ -1,0 +1,9 @@
+.category-page {
+      padding: 40px 60px 40px 112px;
+    width: 100%;
+  background: linear-gradient(
+    to bottom,
+    #2a0034,
+    #0f1014 35%
+  );
+}
