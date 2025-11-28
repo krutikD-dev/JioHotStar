@@ -2,24 +2,31 @@ import React, { useEffect, useState } from "react";
 import "./MovieDetailModal.css";
 import MovieCard from "./MovieCard";
 import axios from "axios";
-import unknownprson from '../assets/unknownprson.png'
+import unknownperson from "../assets/unknownprson.png";
 
-const TMDB_API_KEY = "4e44d9029b1270a757cddc766a1bcb63";
+const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
+const BASE_URL = import.meta.env.VITE_TMDB_BASE_URL;
+const IMAGE_BASE_URL = import.meta.env.VITE_TMDB_IMAGE_BASE_URL;
 
-export default function MovieDetailModal({movie,similarMovies = [],onClose}) {
+const BANNER_SIZE = import.meta.env.VITE_TMDB_BANNER_SIZE;
+const CAST_SIZE = import.meta.env.VITE_TMDB_CAST_SIZE;
+
+export default function MovieDetailModal({
+  movie,
+  similarMovies = [],
+  onClose
+}) {
   const [activeTab, setActiveTab] = useState("similar");
   const [cast, setCast] = useState([]);
   const [loadingCast, setLoadingCast] = useState(true);
 
-
-  const mediaType =
-  movie.media_type ||
-  (movie.first_air_date ? "tv" : "movie");
-
   if (!movie) return null;
 
+  const mediaType =
+    movie.media_type || (movie.first_air_date ? "tv" : "movie");
+
   const banner = movie.backdrop_path
-    ? `https://image.tmdb.org/t/p/original${movie.backdrop_path}`
+    ? `${IMAGE_BASE_URL}/${BANNER_SIZE}${movie.backdrop_path}`
     : "";
 
   useEffect(() => {
@@ -27,13 +34,13 @@ export default function MovieDetailModal({movie,similarMovies = [],onClose}) {
       try {
         setLoadingCast(true);
 
-        const url =
+        const creditsUrl =
           mediaType === "tv"
-            ? `https://api.themoviedb.org/3/tv/${movie.id}/credits`
-            : `https://api.themoviedb.org/3/movie/${movie.id}/credits`;
+            ? `${BASE_URL}/tv/${movie.id}/credits`
+            : `${BASE_URL}/movie/${movie.id}/credits`;
 
-        const res = await axios.get(url, {
-          params: { api_key: TMDB_API_KEY },
+        const res = await axios.get(creditsUrl, {
+          params: { api_key: API_KEY },
         });
 
         setCast(res.data.cast?.slice(0, 10) || []);
@@ -54,7 +61,7 @@ export default function MovieDetailModal({movie,similarMovies = [],onClose}) {
 
         <div
           className="modal-hero"
-          style={{ backgroundImage: `url(${banner})` }}
+          style={{ backgroundImage: banner ? `url(${banner})` : "none" }}
         >
           <div className="modal-gradient" />
 
@@ -64,7 +71,7 @@ export default function MovieDetailModal({movie,similarMovies = [],onClose}) {
             </h1>
 
             <p className="modal-meta">
-              {movie.release_date?.slice(0, 4) || "N/A"} • U/A 13+ • ⭐{" "}
+              {movie.release_date?.slice(0, 4) || "N/A"} • U/A 13+ • <i class="fa-solid fa-star"></i>{" "}
               {movie.vote_average?.toFixed(1)}
             </p>
 
@@ -73,9 +80,15 @@ export default function MovieDetailModal({movie,similarMovies = [],onClose}) {
             </p>
 
             <div className="modal-buttons">
-              <button className="watch-btn"><i class="fa-solid fa-play"></i> Watch Now</button>
-              <button className="icon-btn"><i class="fa-solid fa-plus"></i></button>
-              <button className="icon-btn"><i class="fa-solid fa-volume-high"></i></button>
+              <button className="watch-btn">
+                <i className="fa-solid fa-play"></i> Watch Now
+              </button>
+              <button className="icon-btn">
+                <i className="fa-solid fa-plus"></i>
+              </button>
+              <button className="icon-btn">
+                <i className="fa-solid fa-volume-high"></i>
+              </button>
             </div>
           </div>
         </div>
@@ -92,10 +105,11 @@ export default function MovieDetailModal({movie,similarMovies = [],onClose}) {
                   <img
                     src={
                       actor.profile_path
-                        ? `https://image.tmdb.org/t/p/w185${actor.profile_path}`
-                        : unknownprson
+                        ? `${IMAGE_BASE_URL}/${CAST_SIZE}${actor.profile_path}`
+                        : unknownperson
                     }
                     alt={actor.name}
+                    loading="lazy"
                   />
                   <p className="cast-name">{actor.name}</p>
                   <span className="cast-character">

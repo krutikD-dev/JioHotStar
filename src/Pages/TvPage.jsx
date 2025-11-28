@@ -6,16 +6,17 @@ import HeroCarousal from "../Components/HeroCarousal";
 import MoviesRow from "../Components/MoviesRow";
 import Footer from "../Components/Footer";
 
-const TMDB_API_KEY = "4e44d9029b1270a757cddc766a1bcb63";
+const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
+const BASE_URL = import.meta.env.VITE_TMDB_BASE_URL;
 
 const TV_TRENDING =
-  `https://api.themoviedb.org/3/trending/tv/day?api_key=${TMDB_API_KEY}`;
+  `${BASE_URL}/trending/tv/day?api_key=${API_KEY}`;
 
 const TV_POPULAR =
-  `https://api.themoviedb.org/3/tv/popular?api_key=${TMDB_API_KEY}`;
+  `${BASE_URL}/tv/popular?api_key=${API_KEY}`;
 
 const TV_TOP_RATED =
-  `https://api.themoviedb.org/3/tv/top_rated?api_key=${TMDB_API_KEY}`;
+  `${BASE_URL}/tv/top_rated?api_key=${API_KEY}`;
 
 function TvPage() {
   const [trending, setTrending] = useState([]);
@@ -37,7 +38,6 @@ function TvPage() {
         setTrending(trendingRes.data.results || []);
         setPopular(popularRes.data.results || []);
         setTopRated(topRatedRes.data.results || []);
-
       } catch (error) {
         console.error("Error fetching TV shows:", error);
       } finally {
@@ -52,7 +52,6 @@ function TvPage() {
 
   return (
     <div className="main-container">
-    
       <HeroCarousal />
 
       <div className="latest-release-section">

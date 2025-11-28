@@ -1,19 +1,21 @@
 import React, { useEffect, useState } from "react";
-import { useParams,useLocation } from "react-router-dom";
+import { useParams, useLocation } from "react-router-dom";
 import axios from "axios";
 import MovieCard from "../Components/MovieCard";
 import "./CategoryListingPage.css";
 import MovieDetailModal from "../Components/MovieDetailModal";
 
-const TMDB_API_KEY = "4e44d9029b1270a757cddc766a1bcb63";
+const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
+const BASE_URL = import.meta.env.VITE_TMDB_BASE_URL;
 
 export default function CategoryListingPage() {
   const { type, value } = useParams();
   const { state } = useLocation();
-  const[selectedMovie, setSelectedMovie]=useState(null)
+  const [selectedMovie, setSelectedMovie] = useState(null);
 
-  const pageTitle = state?.title 
-//   console.log(type,value, state)
+  const pageTitle = state?.title;
+  //   console.log(type,value, state)
+
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -21,11 +23,11 @@ export default function CategoryListingPage() {
     let url = "";
 
     if (type === "language") {
-      url = `https://api.themoviedb.org/3/discover/movie?api_key=${TMDB_API_KEY}&with_original_language=${value}`;
+      url = `${BASE_URL}/discover/movie?api_key=${API_KEY}&with_original_language=${value}`;
     }
 
     if (type === "browse") {
-      url = `https://api.themoviedb.org/3/trending/${value}/day?api_key=${TMDB_API_KEY}`;
+      url = `${BASE_URL}/trending/${value}/day?api_key=${API_KEY}`;
     }
 
     const fetchData = async () => {
@@ -52,10 +54,21 @@ export default function CategoryListingPage() {
 
       <div className="category-grid">
         {movies.map((movie) => (
-          <MovieCard key={movie.id} movie={movie} onClick={() => setSelectedMovie(movie)}/>
+          <MovieCard
+            key={movie.id}
+            movie={movie}
+            onClick={() => setSelectedMovie(movie)}
+          />
         ))}
       </div>
-      {selectedMovie && <MovieDetailModal selectedMovie={selectedMovie}  movie={selectedMovie} onClose={() => setSelectedMovie(null)}/>}
+
+      {selectedMovie && (
+        <MovieDetailModal
+          selectedMovie={selectedMovie}
+          movie={selectedMovie}
+          onClose={() => setSelectedMovie(null)}
+        />
+      )}
     </div>
   );
 }

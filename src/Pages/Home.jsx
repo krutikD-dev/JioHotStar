@@ -7,16 +7,17 @@ import HeroCarousal from "../Components/HeroCarousal";
 import MoviesRow from "../Components/MoviesRow";
 import Footer from "../Components/Footer";
 
-const TMDB_API_KEY = "4e44d9029b1270a757cddc766a1bcb63";
+const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
+const BASE_URL = import.meta.env.VITE_TMDB_BASE_URL;
 
 const TRENDING_ALL =
-  `https://api.themoviedb.org/3/trending/all/day?api_key=${TMDB_API_KEY}`;
+  `${BASE_URL}/trending/all/day?api_key=${API_KEY}`;
 
 const POPULAR_MOVIES =
-  `https://api.themoviedb.org/3/movie/popular?api_key=${TMDB_API_KEY}`;
+  `${BASE_URL}/movie/popular?api_key=${API_KEY}`;
 
 const TOP_RATED_MOVIES =
-  `https://api.themoviedb.org/3/movie/top_rated?api_key=${TMDB_API_KEY}`;
+  `${BASE_URL}/movie/top_rated?api_key=${API_KEY}`;
 
 function HomePage() {
   const [trending, setTrending] = useState([]);
@@ -38,7 +39,6 @@ function HomePage() {
         setTrending(trendingRes.data.results || []);
         setPopular(popularRes.data.results || []);
         setTopRated(topRatedRes.data.results || []);
-
       } catch (error) {
         console.error("Error fetching home data:", error);
       } finally {

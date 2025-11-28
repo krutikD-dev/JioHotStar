@@ -1,48 +1,43 @@
 import React, { useState } from "react";
 import "./MovieCard.css";
 
-let hideTimeout = null; 
+const IMAGE_BASE_URL = import.meta.env.VITE_TMDB_IMAGE_BASE_URL;
+const POSTER_SIZE = import.meta.env.VITE_TMDB_POSTER_SIZE;
+const BANNER_SIZE = import.meta.env.VITE_TMDB_BANNER_SIZE;
 
 export default function MovieCard({ movie, onClick }) {
   const [show, setShow] = useState(false);
 
   const poster = movie.poster_path
-    ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
-    : "https://via.placeholder.com/400x600";
+    ? `${IMAGE_BASE_URL}/${POSTER_SIZE}${movie.poster_path}`
+    : "";
 
   const banner = movie.backdrop_path
-    ? `https://image.tmdb.org/t/p/w780${movie.backdrop_path}`
+    ? `${IMAGE_BASE_URL}/${BANNER_SIZE}${movie.backdrop_path}`
     : poster;
 
-
   const handleEnter = () => {
-    setTimeout(() => {
-      setShow(true);
-    }, 150);
+    setTimeout(() => setShow(true), 150);
   };
 
   const handleLeave = () => {
-    setTimeout(() => {
-      setShow(false);
-    }, 150);
+    setTimeout(() => setShow(false), 150);
   };
 
   const handlePopupEnter = () => {
-    setTimeout(() => {
-      setShow(true);
-    }, 100);
+    setTimeout(() => setShow(true), 100);
   };
 
   const handlePopupLeave = () => {
-    setTimeout(() => {
-      setShow(false);
-    }, 100);
+    setTimeout(() => setShow(false), 100);
+  };
+  
+
+  const handleClick = () => {
+    setShow(false);
+    onClick();
   };
 
-  const handleClick=()=>{
-    setShow(false)
-    onClick()
-  }
 
   return (
     <div
@@ -52,7 +47,12 @@ export default function MovieCard({ movie, onClick }) {
       onClick={handleClick}
     >
       <div className="movie-card">
-        <img className="movie-img" src={poster} alt="" />
+        <img
+          className="movie-img"
+          src={poster}
+          alt={movie.title || movie.name || ""}
+          loading="lazy"
+        />
       </div>
 
       {show && (
@@ -66,7 +66,6 @@ export default function MovieCard({ movie, onClick }) {
               src={banner}
               alt=""
               className="popup-banner-img"
-              style={{ width: "100%", objectFit: "cover" }}
               loading="lazy"
             />
             <div className="popup-language-tag">
