@@ -2,16 +2,25 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "../Components/MainContent.css";
 
-import HeroCarousal from "../Components/HeroCarousal";
+import HeroCarousel from "../Components/HeroCarousal";
 import MoviesRow from "../Components/MoviesRow";
 import Footer from "../Components/Footer";
+import { HERO_CONFIG } from "../config/HeroConfig";
+
 
 const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
+const BASE_URL = import.meta.env.VITE_TMDB_BASE_URL;
 
-const SPORTS_QUERIES = {
-  cricket: `https://api.themoviedb.org/3/search/tv?api_key=${API_KEY}&query=cricket`,
-  football: `https://api.themoviedb.org/3/search/tv?api_key=${API_KEY}&query=football`,
-  sportsMovie: `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=sports`,
+// const SPORTS_HERO_URL =
+//   `${BASE_URL}/discover/movie?api_key=${API_KEY}&with_keywords=180547&sort_by=popularity.desc`;
+
+const SPORTS_ROWS = {
+  cricket:
+    `${BASE_URL}/search/tv?api_key=${API_KEY}&query=cricket`,
+  football:
+    `${BASE_URL}/search/tv?api_key=${API_KEY}&query=football`,
+  sportsMovies:
+    `${BASE_URL}/search/movie?api_key=${API_KEY}&query=sports`,
 };
 
 function SportsPage() {
@@ -21,36 +30,37 @@ function SportsPage() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchSports = async () => {
+    const fetchSportsRows = async () => {
       try {
         setLoading(true);
 
         const [cricketRes, footballRes, sportsMovieRes] =
           await Promise.all([
-            axios.get(SPORTS_QUERIES.cricket),
-            axios.get(SPORTS_QUERIES.football),
-            axios.get(SPORTS_QUERIES.sportsMovie),
+            axios.get(SPORTS_ROWS.cricket),
+            axios.get(SPORTS_ROWS.football),
+            axios.get(SPORTS_ROWS.sportsMovies),
           ]);
 
         setCricket(cricketRes.data.results || []);
         setFootball(footballRes.data.results || []);
         setSportsMovies(sportsMovieRes.data.results || []);
-
-      } catch (err) {
-        console.error("Error fetching sports content:", err);
+      } catch (error) {
+        console.error("Error fetching sports content:", error);
       } finally {
         setLoading(false);
       }
     };
 
-    fetchSports();
+    fetchSportsRows();
   }, []);
 
-  if (loading) return <div>Loading...</div>;
-
+  if (loading) return <div>Loading sports...</div>;
+  console.log(cricket)
   return (
     <div className="main-container">
-      <HeroCarousal />
+      <HeroCarousel
+        {...HERO_CONFIG.sports}
+      />
 
       <div className="latest-release-section">
         <MoviesRow title="Cricket Shows" movies={cricket} />

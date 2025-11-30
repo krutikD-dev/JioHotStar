@@ -5,6 +5,8 @@ import "../Components/MainContent.css";
 import HeroCarousal from "../Components/HeroCarousal";
 import MoviesRow from "../Components/MoviesRow";
 import Footer from "../Components/Footer";
+import { HERO_CONFIG } from "../config/HeroConfig";
+
 
 const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
 const BASE_URL = import.meta.env.VITE_TMDB_BASE_URL;
@@ -52,7 +54,7 @@ function MoviePage() {
 
   return (
     <div className="main-container">
-      <HeroCarousal />
+      <HeroCarousal {...HERO_CONFIG.movies}/>
 
       <div className="latest-release-section">
         <MoviesRow title="Trending Movies" movies={trending} />

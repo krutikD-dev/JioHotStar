@@ -16,7 +16,7 @@ export default function MovieDetailModal({
   similarMovies = [],
   onClose
 }) {
-  const [activeTab, setActiveTab] = useState("similar");
+  const [activeTab, setActiveTab] = useState("details");
   const [cast, setCast] = useState([]);
   const [loadingCast, setLoadingCast] = useState(true);
 
@@ -27,7 +27,7 @@ export default function MovieDetailModal({
 
   const banner = movie.backdrop_path
     ? `${IMAGE_BASE_URL}/${BANNER_SIZE}${movie.backdrop_path}`
-    : "";
+    : null;
 
   useEffect(() => {
     const fetchCast = async () => {
@@ -123,16 +123,16 @@ export default function MovieDetailModal({
 
         <div className="modal-tabs">
           <button
-            className={activeTab === "similar" ? "active" : ""}
-            onClick={() => setActiveTab("similar")}
-          >
-            More Like This
-          </button>
-          <button
             className={activeTab === "details" ? "active" : ""}
             onClick={() => setActiveTab("details")}
           >
             Details
+          </button>
+          <button
+            className={activeTab === "similar" ? "active" : ""}
+            onClick={() => setActiveTab("similar")}
+          >
+            More Like This
           </button>
         </div>
 

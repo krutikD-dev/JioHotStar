@@ -130,6 +130,9 @@
 .control-dots {
   display: none;
 }
+.control-prev, .control-next{
+  display: none;
+}
 
 @media (max-width: 768px) {
   .content {

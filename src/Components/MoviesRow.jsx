@@ -1,7 +1,10 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, lazy,Suspense, useState } from "react";
 import MovieCard from "./MovieCard";
 import "./MoviesRow.css";
-import MovieDetailModal from '../Components/MovieDetailModal'
+
+const MovieDetailModal = lazy(() =>
+  import("../Components/MovieDetailModal")
+);
 
 export default function MoviesRow({ title, movies }) {
   const [selectedMovie, setSelectedMovie] = useState(null);
@@ -15,7 +18,7 @@ export default function MoviesRow({ title, movies }) {
       behavior: "smooth",
     });
   };
-console.log(selectedMovie)
+// console.log(selectedMovie)
   return (
     <>
       <div
@@ -41,10 +44,12 @@ console.log(selectedMovie)
         </div>
       </div>
       {selectedMovie && (
+        <Suspense fallback={<div className="modal-loader">Loading...</div>}>
         <MovieDetailModal
           movie={selectedMovie}
           onClose={() => setSelectedMovie(null)}
         />
+        </Suspense>
       )}
     </>
   );

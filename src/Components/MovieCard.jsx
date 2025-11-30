@@ -16,20 +16,15 @@ export default function MovieCard({ movie, onClick }) {
     ? `${IMAGE_BASE_URL}/${BANNER_SIZE}${movie.backdrop_path}`
     : poster;
 
-  const handleEnter = () => {
-    setTimeout(() => setShow(true), 150);
-  };
-
-  const handleLeave = () => {
-    setTimeout(() => setShow(false), 150);
-  };
 
   const handlePopupEnter = () => {
-    setTimeout(() => setShow(true), 100);
+    // setTimeout(() => setShow(true), 100);
+    setShow(true)
   };
 
   const handlePopupLeave = () => {
-    setTimeout(() => setShow(false), 100);
+    // setTimeout(() => setShow(false), 100);
+    setShow(false)
   };
   
 
@@ -42,8 +37,8 @@ export default function MovieCard({ movie, onClick }) {
   return (
     <div
       className="movie-card-wrapper"
-      onMouseEnter={handleEnter}
-      onMouseLeave={handleLeave}
+      onMouseEnter={handlePopupEnter}
+      onMouseLeave={handlePopupLeave}
       onClick={handleClick}
     >
       <div className="movie-card">

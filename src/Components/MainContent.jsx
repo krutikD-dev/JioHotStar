@@ -25,6 +25,7 @@ function MainContent() {
           <Route path="/sports" element={<SportsPage />} />
           <Route path="/category" element={<CategoryPage />} />
           <Route path="/myspace" element={<MySpace />} />
+          <Route path="*" element={<Home/>} />
           <Route
             path="/category/:type/:value"
             element={<CategoryListingPage />}

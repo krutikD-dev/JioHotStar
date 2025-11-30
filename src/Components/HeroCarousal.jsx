@@ -1,102 +1,110 @@
 import "./HeroCarousal.css";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import axios from "axios";
 import MovieDetailModal from "./MovieDetailModal";
 
-
 const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
 const BASE_URL = import.meta.env.VITE_TMDB_BASE_URL;
 const IMAGE_BASE_URL = import.meta.env.VITE_TMDB_IMAGE_BASE_URL;
-
-const TRENDING_URL = `${BASE_URL}/trending/all/day?api_key=${API_KEY}&language=en-US`;
 const GENRE_URL = `${BASE_URL}/genre/movie/list?api_key=${API_KEY}&language=en-US`;
 
-const HeroCarousal = () => {
-  const [popularMovies, setPopularMovies] = useState([]);
-  const [loading, setLoading] = useState(true);
+function HeroCarousel({ fetchUrl }) {
+  const [items, setItems] = useState([]);
   const [genreMap, setGenreMap] = useState({});
-  const [selectedMovie, setSelectedMovie] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [selected, setSelected] = useState(null);
   const [currentSlide, setCurrentSlide] = useState(0);
 
   useEffect(() => {
+    let active = true;
+
     const fetchData = async () => {
       try {
-        const genreRes = await axios.get(GENRE_URL);
+        setLoading(true);
+
+        const [genreRes, moviesRes] = await Promise.all([
+          axios.get(GENRE_URL),
+          axios.get(fetchUrl),
+        ]);
+
+        if (!active) return;
+
         const map = {};
-        genreRes.data.genres.forEach((g) => {
+        genreRes.data.genres.forEach(g => {
           map[g.id] = g.name;
         });
-        setGenreMap(map);
 
-        const moviesRes = await axios.get(TRENDING_URL);
-        setPopularMovies(moviesRes.data.results || []);
-      } catch (error) {
-        console.error("Error fetching movies:", error);
+        setGenreMap(map);
+        setItems(moviesRes.data.results || []);
+      } catch (e) {
+        console.error("HeroCarousel error:", e);
       } finally {
-        setLoading(false);
+        active && setLoading(false);
       }
     };
 
     fetchData();
-  }, []);
+    return () => { active = false };
+  }, [fetchUrl]);
 
-  if (loading) return <div>Loading...</div>;
-
-  const getGenreNames = (ids) =>
-    ids?.map((id) => genreMap[id]).filter(Boolean) || [];
+  const getGenres = ids =>
+    ids?.map(id => genreMap[id]).filter(Boolean).join(" | ");
 
   return (
     <div className="hero-carousel-container">
+
       <Carousel
-        autoPlay
-        infiniteLoop
-        transitionTime={1000}
-        showThumbs={false}
-        showStatus={false}
-        swipeable={false}
-        renderArrowNext={() => null}
-        renderArrowPrev={() => null}
-        stopOnHover={false}
-        animationHandler="fade"
-        onChange={(index) => setCurrentSlide(index)}
+       key={items.length}
+  autoPlay
+  interval={4500}
+  infiniteLoop
+  transitionTime={1000}
+  showThumbs={false}
+  showStatus={false}
+  stopOnHover={false}
+  animationHandler="fade"
+  swipeable
+  emulateTouch
+  onChange={setCurrentSlide}
       >
-        {popularMovies.map((movie, index) => (
-          <div className="carousel-slide" key={movie.id}>
+        {items.map((item, index) => (
+          <div className="carousel-slide" key={item.id}>
             <div
               className="hero-image"
               style={{
                 backgroundImage:
                   index === currentSlide
-                    ? `url(${IMAGE_BASE_URL}/w1280${movie.backdrop_path})`
+                    ? `url(${IMAGE_BASE_URL}/w1280${item.backdrop_path})`
                     : "none",
               }}
             >
               <div className="overlay" />
 
               <div className="content">
+
                 <h1 className="title">
-                  {movie.original_name || movie.original_title}
+                  {item.original_name || item.original_title}
                 </h1>
 
                 <p className="meta">
-                  {movie.release_date || "Release date unavailable"} •{" "}
-                  {movie.original_language}
+                  {item.release_date || "Release date unavailable"} •{" "}
+                  {item.original_language}
                 </p>
 
                 <p className="description">
-                  {movie.overview || "No description available."}
+                  {item.overview || "No description available."}
                 </p>
 
                 <div className="tags">
-                  {getGenreNames(movie.genre_ids).join(" | ")}
+                  {getGenres(item.genre_ids)}
                 </div>
 
                 <div className="buttons">
                   <button
                     className="subscribe-btn"
-                    onClick={() => setSelectedMovie(movie)}
+                    onClick={() => setSelected(item)}
                   >
                     ▶ Watch Now
                   </button>
@@ -108,14 +116,14 @@ const HeroCarousal = () => {
         ))}
       </Carousel>
 
-      {selectedMovie && (
+      {selected && (
         <MovieDetailModal
-          movie={selectedMovie}
-          onClose={() => setSelectedMovie(null)}
+          movie={selected}
+          onClose={() => setSelected(null)}
         />
       )}
     </div>
   );
-};
+}
 
-export default HeroCarousal;
+export default HeroCarousel;
