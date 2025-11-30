@@ -10,7 +10,7 @@ export default function MovieCard({ movie, onClick }) {
 
   const poster = movie.poster_path
     ? `${IMAGE_BASE_URL}/${POSTER_SIZE}${movie.poster_path}`
-    : "";
+    : null;
 
   const banner = movie.backdrop_path
     ? `${IMAGE_BASE_URL}/${BANNER_SIZE}${movie.backdrop_path}`

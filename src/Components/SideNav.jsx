@@ -4,13 +4,15 @@ import logo from '../assets/HotStarLogo.png'
 import { LuPopcorn } from "react-icons/lu";
 import { BiCategory } from "react-icons/bi";
 import { NavLink } from 'react-router-dom';
+import { useContext } from "react";
+import { LoginContext } from "../context/LoginContext";
 
 function SideNav() {
   // const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isHovering, setIsHovering] = useState(false)
-  const [userPhone, setUserPhone] = useState("");
+  // const [userPhone, setUserPhone] = useState("");
 
-  useEffect(() => {
+  {/*useEffect(() => {
     // const loggedIn = localStorage.getItem("isLoggedIn");
     const phone = localStorage.getItem("userPhone");
 
@@ -18,7 +20,9 @@ function SideNav() {
       // setIsLoggedIn(true);
       setUserPhone(phone);
     }
-  }, []);
+  }, []);*/}
+
+  const { userPhone } = useContext(LoginContext);
 
   const handleMouseEnter = ()=>{
     setIsHovering(true)

@@ -6,12 +6,12 @@ import HeroCarousal from "../Components/HeroCarousal";
 import MoviesRow from "../Components/MoviesRow";
 import Footer from "../Components/Footer";
 
-const TMDB_API_KEY = "4e44d9029b1270a757cddc766a1bcb63";
+const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
 
 const SPORTS_QUERIES = {
-  cricket: `https://api.themoviedb.org/3/search/tv?api_key=${TMDB_API_KEY}&query=cricket`,
-  football: `https://api.themoviedb.org/3/search/tv?api_key=${TMDB_API_KEY}&query=football`,
-  sportsMovie: `https://api.themoviedb.org/3/search/movie?api_key=${TMDB_API_KEY}&query=sports`,
+  cricket: `https://api.themoviedb.org/3/search/tv?api_key=${API_KEY}&query=cricket`,
+  football: `https://api.themoviedb.org/3/search/tv?api_key=${API_KEY}&query=football`,
+  sportsMovie: `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=sports`,
 };
 
 function SportsPage() {

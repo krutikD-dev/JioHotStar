@@ -5,9 +5,6 @@
   flex: 0 0 180px;
   transition: transform 0.25s cubic-bezier(.25,.46,.45,.94);
 }
-.movie-card-wrapper:hover {
-  /* transform: translateY(-6px); */
-}
 
 .movie-img {
   width: 100%;

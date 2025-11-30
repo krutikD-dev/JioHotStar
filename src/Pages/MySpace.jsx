@@ -1,13 +1,17 @@
 import "./MySpace.css";
 import Modal from "../Components/Modal";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext  } from "react";
 import { useNavigate } from "react-router-dom";
+import { LoginContext } from "../context/LoginContext";
+
 
 export default function MySpace() {
   const [showModal, setShowModal] = useState(false);
   // const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [userPhone, setUserPhone] = useState("");
+  // const [userPhone, setUserPhone] = useState("");
   const navigate=useNavigate()
+  const { userPhone, setUserPhone } = useContext(LoginContext);
+
 
   useEffect(() => {
     // const loggedIn = localStorage.getItem("isLoggedIn");
@@ -27,6 +31,7 @@ export default function MySpace() {
 
   const handleLogOut=()=>{
     localStorage.clear();
+    setUserPhone("");
     navigate(`/`)
   }
 

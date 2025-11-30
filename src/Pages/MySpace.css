@@ -89,11 +89,24 @@
   color: #fff;
   background: linear-gradient(92.7deg, #1492ff 0%, #0860c4 50%, #eb0066 100%);
 }
+.myspace-container {
+  position: relative;
+  min-height: 100vh;
+  /* margin-left: 112px;*/
+  width: 100%;
+  background: linear-gradient(
+      180deg,
+      rgba(88, 0, 120, 0.4) 0%,
+      rgba(10, 12, 18, 0.95) 40%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 .myspace-logged-in {
-  margin-left: 112px;
+  /* margin-left: 112px; */
   width: 100%;
-  padding: 40px;
+  padding: 40px 60px 40px 112px;
   min-height: 100vh;
   background: linear-gradient(to bottom, #2a0034, #0f1014 35%);
   color: #fff;
@@ -110,13 +123,12 @@
   gap: 14px;
 }
 
-/* .subscribe-btn {
-  background: linear-gradient(90deg, #1f80e0, #dd1be5);
-  border: none;
-  color: #fff;
-  padding: 10px 18px;
-  border-radius: 6px;
-} */
+.subscribe-btn {
+  background: linear-gradient(92.7deg, #1492ff 0%, #0860c4 50%, #eb0066 100%) !important;
+  font-size: 1.1rem;
+  font-weight: 600;
+  width: 21.7rem;
+} 
 
 .help-btn-small {
   background: #1c1f2a;
@@ -126,18 +138,6 @@
   border-radius: 6px;
 }
 
-.myspace-logged-in {
-  margin-left: 112px;
-  min-height: 100vh;
-  padding: 40px;
-  background: linear-gradient(
-    180deg,
-    #3b003f 0%,
-    #0f1014 40%,
-    #0f1014 100%
-  );
-  color: #fff;
-}
 
 .myspace-top {
   display: flex;
@@ -188,8 +188,20 @@
   color: #fff;
   padding: 10px 16px;
   border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
 }
 
+.logoutBtn{
+  padding: 12px 32px;
+    font-size: 16px;
+    font-weight: 700;
+    height: 45px;
+    background: rgba(255, 255, 255, 0.08);
+    border: none;
+    border-radius: 8px;
+    color: #fff;
+}
 
 .profiles-section {
   margin-bottom: 48px;

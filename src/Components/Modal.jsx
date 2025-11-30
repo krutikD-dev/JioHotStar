@@ -3,12 +3,17 @@ import './Modal.css'
 import QR from '../assets/QR.png'
 import TextField from '@mui/material/TextField';
 import OtpInput from './OtpInput';
+import { useContext } from "react";
+import { LoginContext } from "../context/LoginContext";
+
 
 const Modal = ({ showModal, closeModal, onSuccess }) => {
   const [number, setNumber] = useState('')
   const [otpSection, setOtpSection] = useState(false)
   const [showSuccess, setShowSuccess] = useState(false)
   const inputRef = useRef(null);
+  const { setUserPhone } = useContext(LoginContext);
+
 
   useEffect(() => {
     if (showModal) {
@@ -31,6 +36,7 @@ const Modal = ({ showModal, closeModal, onSuccess }) => {
   if (otp === "1111") {
     // localStorage.setItem("isLoggedIn", "true");
     localStorage.setItem("userPhone", number);
+    setUserPhone(number); 
 
     onSuccess(number);
   }
