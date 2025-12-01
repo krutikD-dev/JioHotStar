@@ -54,7 +54,7 @@ function SportsPage() {
   }, []);
 
   if (loading) return <div>Loading sports...</div>;
-  console.log(cricket)
+  // console.log(cricket)
   return (
     <div className="main-container">
       <HeroCarousel
