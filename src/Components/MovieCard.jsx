@@ -1,5 +1,9 @@
 import React, { useState } from "react";
 import "./MovieCard.css";
+import unavailableImg from '../assets/unvailableImg.jpg'
+import { useInView } from 'react-intersection-observer';
+
+
 
 const IMAGE_BASE_URL = import.meta.env.VITE_TMDB_IMAGE_BASE_URL;
 const POSTER_SIZE = import.meta.env.VITE_TMDB_POSTER_SIZE;
@@ -7,6 +11,9 @@ const BANNER_SIZE = import.meta.env.VITE_TMDB_BANNER_SIZE;
 
 export default function MovieCard({ movie, onClick }) {
   const [show, setShow] = useState(false);
+  const { ref, inView} = useInView({
+    threshold: 0.5,
+  });
 
   const poster = movie.poster_path
     ? `${IMAGE_BASE_URL}/${POSTER_SIZE}${movie.poster_path}`
@@ -35,7 +42,11 @@ export default function MovieCard({ movie, onClick }) {
 
 
   return (
-    <div
+    
+
+      <div ref={ref} className="movie-card-wrapper">
+    {inView ? (
+      <div
       className="movie-card-wrapper"
       onMouseEnter={handlePopupEnter}
       onMouseLeave={handlePopupLeave}
@@ -43,8 +54,8 @@ export default function MovieCard({ movie, onClick }) {
     >
       <div className="movie-card">
         <img
-          className="movie-img"
-          src={poster}
+          className={!poster ? 'movie-img h-315' : 'movie-img' }
+          src={poster || unavailableImg}
           alt={movie.title || movie.name || ""}
           loading="lazy"
         />
@@ -73,7 +84,7 @@ export default function MovieCard({ movie, onClick }) {
           </h3>
 
           <div className="movie-popup-top">
-            <button className="watch-btn1">▶ Watch Now</button>
+            <button className="watch-btn1"><i className="fa-solid fa-play"></i> Watch Now</button>
             <button className="plus-btn">+</button>
           </div>
 
@@ -87,5 +98,10 @@ export default function MovieCard({ movie, onClick }) {
         </div>
       )}
     </div>
+    ) : (
+      <div className="movie-card-skeleton" />
+    )}
+  </div>
+
   );
 }

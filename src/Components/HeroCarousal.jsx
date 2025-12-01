@@ -56,18 +56,17 @@ function HeroCarousel({ fetchUrl }) {
     <div className="hero-carousel-container">
 
       <Carousel
-       key={items.length}
-  autoPlay
-  interval={4500}
-  infiniteLoop
-  transitionTime={1000}
-  showThumbs={false}
-  showStatus={false}
-  stopOnHover={false}
-  animationHandler="fade"
-  swipeable
-  emulateTouch
-  onChange={setCurrentSlide}
+        key={items.length}
+        autoPlay
+        // interval={3000}
+        infiniteLoop
+        transitionTime={1000}
+        showThumbs={false}
+        showStatus={false}
+        stopOnHover={false}
+        animationHandler="fade"
+        swipeable
+        onChange={setCurrentSlide}
       >
         {items.map((item, index) => (
           <div className="carousel-slide" key={item.id}>
@@ -106,7 +105,7 @@ function HeroCarousel({ fetchUrl }) {
                     className="subscribe-btn"
                     onClick={() => setSelected(item)}
                   >
-                    ▶ Watch Now
+                    <i className="fa-solid fa-play"></i> Watch Now
                   </button>
                   <button className="plus-btn">+</button>
                 </div>

@@ -43,7 +43,7 @@ export default function MovieDetailModal({
           params: { api_key: API_KEY },
         });
 
-        setCast(res.data.cast?.slice(0, 10) || []);
+        setCast(res.data.cast || []);
       } catch (err) {
         console.error("Failed to fetch cast", err);
       } finally {
@@ -56,8 +56,9 @@ export default function MovieDetailModal({
 
   return (
     <div className="movie-modal-backdrop" onClick={onClose}>
+      
       <div className="movie-modal" onClick={(e) => e.stopPropagation()}>
-        <button className="close-btn" onClick={onClose}>✕</button>
+        {/* <button className="close-btn" onClick={onClose}>✕</button> */}
 
         <div
           className="modal-hero"
@@ -66,7 +67,7 @@ export default function MovieDetailModal({
           <div className="modal-gradient" />
 
           <div className="modal-content">
-            <h1 className="modal-title">
+            <h1 title={movie.title || movie.name} className="modal-title">
               {movie.title || movie.name}
             </h1>
 
@@ -75,7 +76,7 @@ export default function MovieDetailModal({
               {movie.vote_average?.toFixed(1)}
             </p>
 
-            <p className="modal-desc">
+            <p title={movie.overview} className="modal-desc">
               {movie.overview}
             </p>
 
@@ -100,9 +101,10 @@ export default function MovieDetailModal({
             <p className="cast-loading">Loading cast…</p>
           ) : (
             <div className="cast-row">
-              {cast.map((actor) => (
+              {cast.length>1 ? cast.map((actor) => (
                 <div className="cast-card" key={actor.id}>
                   <img
+                  className="cast-profile-pic"
                     src={
                       actor.profile_path
                         ? `${IMAGE_BASE_URL}/${CAST_SIZE}${actor.profile_path}`
@@ -116,7 +118,9 @@ export default function MovieDetailModal({
                     {actor.character}
                   </span>
                 </div>
-              ))}
+              ))
+              : 'No Cast Details found!'
+            }
             </div>
           )}
         </div>
@@ -154,6 +158,7 @@ export default function MovieDetailModal({
           )}
         </div>
       </div>
+        <button className="close-btn" onClick={onClose}>✕</button>
     </div>
   );
 }

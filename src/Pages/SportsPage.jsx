@@ -11,8 +11,6 @@ import { HERO_CONFIG } from "../config/HeroConfig";
 const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
 const BASE_URL = import.meta.env.VITE_TMDB_BASE_URL;
 
-// const SPORTS_HERO_URL =
-//   `${BASE_URL}/discover/movie?api_key=${API_KEY}&with_keywords=180547&sort_by=popularity.desc`;
 
 const SPORTS_ROWS = {
   cricket:
