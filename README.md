@@ -33,7 +33,7 @@ The app consumes The Movie Database (TMDB) API to display movies, TV shows, bann
 
 -> Smooth scrolling & animations
 
-###Note: 
+### 🔑Note: 
 -> Use 1111 as OTP for Login
 
 
