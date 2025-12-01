@@ -17,6 +17,7 @@ The app consumes The Movie Database (TMDB) API to display movies, TV shows, bann
 -> React Intersection Observer
 
 -> CSS / Mui
+
   ## 🚀 Features
 
 
@@ -31,6 +32,9 @@ The app consumes The Movie Database (TMDB) API to display movies, TV shows, bann
 -> Optimized API calls with centralized configuration
 
 -> Smooth scrolling & animations
+
+###Note: 
+-> Use 1111 as OTP for Login
 
 
 ### 💻 Home Page
