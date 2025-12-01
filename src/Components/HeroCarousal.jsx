@@ -64,7 +64,7 @@ function HeroCarousel({ fetchUrl }) {
         showThumbs={false}
         showStatus={false}
         stopOnHover={false}
-        animationHandler="fade"
+        // animationHandler="fade"
         swipeable
         onChange={setCurrentSlide}
       >
