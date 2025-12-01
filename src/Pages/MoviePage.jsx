@@ -8,6 +8,7 @@ import Footer from "../Components/Footer";
 import { HERO_CONFIG } from "../config/HeroConfig";
 
 
+
 const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
 const BASE_URL = import.meta.env.VITE_TMDB_BASE_URL;
 
@@ -50,7 +51,7 @@ function MoviePage() {
     fetchMovies();
   }, []);
 
-  if (loading) return <div>Loading...</div>;
+  if (loading) return <div style={{width:'100%',minHeight:'100vh', display:'flex', justifyContent:'center',alignItems:'center' }}>Loading...</div>;
 
   return (
     <div className="main-container">

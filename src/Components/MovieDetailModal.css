@@ -2,7 +2,7 @@
   position: fixed;
   inset: 0;
   background: rgba(0, 0, 0, 0.85);
-  z-index: 999;
+  z-index: 9999;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -228,4 +228,11 @@
 
 .cast-loading {
   opacity: 0.7;
+}
+
+@media (max-width: 768px) {
+  .close-btn{
+    top: 72px;
+    right: 113px;
+  }
 }

@@ -16,7 +16,7 @@ export default function SearchPage() {
   const [data, setData] = useState([]);
   const [originalData, setOriginalData] = useState([]);
 
-  const [initialLoading, setInitialLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
   const [searchtxt, setSearchtxt] = useState("");
 
   useEffect(() => {
@@ -29,7 +29,7 @@ export default function SearchPage() {
           console.error("Error fetching airing today TV shows:", err);
         }
       finally {
-        setInitialLoading(false);
+        setLoading(false);
       }
     };
 
@@ -54,8 +54,8 @@ export default function SearchPage() {
     return () => clearTimeout(handler);
   }, [searchtxt, originalData]);
 
-  if (initialLoading) {
-    return <div className="search-page">Loading...</div>;
+  if (loading) {
+    return <div style={{width:'100%',minHeight:'100vh', display:'flex', justifyContent:'center',alignItems:'center' }}>Loading...</div>;
   }
 
   return (

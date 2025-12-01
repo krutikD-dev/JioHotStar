@@ -12,7 +12,7 @@ const BANNER_SIZE = import.meta.env.VITE_TMDB_BANNER_SIZE;
 export default function MovieCard({ movie, onClick }) {
   const [show, setShow] = useState(false);
   const { ref, inView} = useInView({
-    threshold: 0.5,
+    threshold: 0.3,
   });
 
   const poster = movie.poster_path
@@ -31,7 +31,7 @@ export default function MovieCard({ movie, onClick }) {
 
   const handlePopupLeave = () => {
     // setTimeout(() => setShow(false), 100);
-    setShow(false)
+    setShow(false)   
   };
   
 
@@ -67,6 +67,7 @@ export default function MovieCard({ movie, onClick }) {
           onMouseEnter={handlePopupEnter}
           onMouseLeave={handlePopupLeave}
         >
+            <div className="popup-overlay"></div>
           <div className="popup-banner">
             <img
               src={banner}

@@ -1,3 +1,35 @@
 .main-container{
     min-height: 50vh;
 }
+.ShimmerUI-container{
+    min-height: 60vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.loader{ display: inline-grid; place-items: center; will-change: transform, opacity; }
+.ring-dash svg{
+  width: calc(var(--size) * 1.6);
+  height: calc(var(--size) * 1.6);
+  display: block;
+  overflow: visible;
+}
+.ring-dash circle{
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 6;
+  stroke-linecap: round;
+
+  /* stable dash + motion (r=16 => ~100px circumference) */
+  stroke-dasharray: 60 100;
+  stroke-dashoffset: 0;
+
+  /* make rotation center reliable across browsers */
+  transform-box: fill-box;
+  transform-origin: 50% 50%;
+
+  /* speed slider now truly speeds it up */
+  animation:
+    ring-rot calc(1.4s / var(--speed)) linear infinite,
+    ring-dash calc(1.2s / var(--speed)) ease-in-out infinite;
+}

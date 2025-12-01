@@ -51,7 +51,7 @@ function HomePage() {
     fetchHomeData();
   }, []);
 
-  if (loading) return <div>Loading...</div>;
+  if (loading) return <div style={{width:'100%',minHeight:'100vh', display:'flex', justifyContent:'center',alignItems:'center' }}>Loading...</div>;
 
   return (
     <div className="main-container">
