@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function CategorySection({ title, items }) {
     const navigate = useNavigate();
-    // console.log(title, items)
+    // console.log(title, items)   
 
     return (
         <div className="category-section">

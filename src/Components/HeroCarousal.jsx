@@ -92,7 +92,7 @@ function HeroCarousel({ fetchUrl }) {
                   {item.original_language}
                 </p>
 
-                <p className="description">
+                <p title={item.overview} className="description">
                   {item.overview || "No description available."}
                 </p>
 
@@ -107,7 +107,7 @@ function HeroCarousel({ fetchUrl }) {
                   >
                     <i className="fa-solid fa-play"></i> Watch Now
                   </button>
-                  <button className="plus-btn">+</button>
+                  <button title='WishList' className="plus-btn">+</button>
                 </div>
               </div>
             </div>

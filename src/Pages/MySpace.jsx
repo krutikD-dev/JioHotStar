@@ -6,32 +6,32 @@ import { LoginContext } from "../context/LoginContext";
 
 
 export default function MySpace() {
-  const [showModal, setShowModal] = useState(false);
-  // const [isLoggedIn, setIsLoggedIn] = useState(false);
-  // const [userPhone, setUserPhone] = useState("");
+  const [showModal, setShowModal] = useState(false)
+  // const [isLoggedIn, setIsLoggedIn] = useState(false)
+  // const [userPhone, setUserPhone] = useState("")
   const navigate=useNavigate()
-  const { userPhone, setUserPhone } = useContext(LoginContext);
+  const { userPhone, setUserPhone } = useContext(LoginContext)
 
 
   useEffect(() => {
     // const loggedIn = localStorage.getItem("isLoggedIn");
-    const phone = localStorage.getItem("userPhone");
+    const phone = localStorage.getItem("userPhone")
 
     if (phone) {
       // setIsLoggedIn(true);
-      setUserPhone(phone);
+      setUserPhone(phone)
     }
-  }, []);
+  }, [])
 
   const handleLoginSuccess = (phone) => {
-    // setIsLoggedIn(true);
-    setUserPhone(phone);
-    setShowModal(false);
-  };
+    // setIsLoggedIn(true)
+    setUserPhone(phone)
+    setShowModal(false)
+  }
 
   const handleLogOut=()=>{
-    localStorage.clear();
-    setUserPhone("");
+    localStorage.clear()
+    setUserPhone("")
     navigate(`/`)
   }
 
@@ -66,7 +66,7 @@ export default function MySpace() {
                 <span className="avatar-initial">
                   {userPhone?.slice(-2)}
                 </span>
-                <span className="tick">✔</span>
+                <span className="tick"><i class="fa-solid fa-check"></i></span>
               </div>
 
               <p>User{userPhone?.slice(-2)}</p>
