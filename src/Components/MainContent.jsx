@@ -16,7 +16,7 @@ const CategoryListingPage = lazy(() =>
 function MainContent() {
   return (
     <>
-      <Suspense fallback={<div style={{width:'100%',minHeight:'100vh', display:'flex', justifyContent:'center',alignItems:'center' }}>Loading...</div>}>
+      <Suspense fallback={<div style={{width:'100%',minHeight:'100vh', display:'flex', justifyContent:'center',alignItems:'center' }}><span className="loader"></span></div>}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/search" element={<SearchPage />} />

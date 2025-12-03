@@ -51,7 +51,7 @@ function MoviePage() {
     fetchMovies();
   }, []);
 
-  if (loading) return <div style={{width:'100%',minHeight:'100vh', display:'flex', justifyContent:'center',alignItems:'center' }}>Loading...</div>;
+  if (loading) return <div style={{width:'100%',minHeight:'100vh', display:'flex', justifyContent:'center',alignItems:'center' }}><span className="loader"></span></div>;
 
   return (
     <div className="main-container">

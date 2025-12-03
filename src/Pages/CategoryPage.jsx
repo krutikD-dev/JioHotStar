@@ -1,6 +1,7 @@
 import "./CategoryPage.css";
 import CategorySection from "./CategorySection";
 import Footer from "../Components/Footer";
+import { useEffect, useState } from "react";
 
 const BROWSE = [
   { title: "TV", type: "browse", value: "tv" },
@@ -16,6 +17,16 @@ const LANGUAGES = [
 ];
 
 export default function CategoryPage() {
+  const [loading, setLoading] =useState(false)
+  useEffect(()=>{
+    setLoading(true)
+    setTimeout(()=>{
+        setLoading(false)
+  ,300})
+  },[])
+
+    if (loading) return <div style={{width:'100%',minHeight:'100vh', display:'flex', justifyContent:'center',alignItems:'center' }}><span class="loader"></span></div>;
+
   return (
     <div className="category-page">
       <CategorySection title="Browse" items={BROWSE} />

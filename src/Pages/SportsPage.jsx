@@ -53,7 +53,7 @@ function SportsPage() {
     fetchSportsRows();
   }, []);
 
-  if (loading) return <div>Loading sports...</div>;
+  if (loading) return <div><span className="loader"></span></div>;
   // console.log(cricket)
   return (
     <div className="main-container">

@@ -10,7 +10,8 @@ import { LoginContext } from "../context/LoginContext";
 const Modal = ({ showModal, closeModal, onSuccess }) => {
   const [number, setNumber] = useState('')
   const [otpSection, setOtpSection] = useState(false)
-  const [showSuccess, setShowSuccess] = useState(false)
+  const [showContinuebtn, setShowContinuebtn] = useState(false)
+  const [currOtp, setCurrOtp] = useState('')
   const inputRef = useRef(null);
   const { setUserPhone } = useContext(LoginContext);
 
@@ -35,6 +36,7 @@ const Modal = ({ showModal, closeModal, onSuccess }) => {
   const onOtpSubmit = (otp) => {
   if (otp === "1111") {
     // localStorage.setItem("isLoggedIn", "true");
+
     localStorage.setItem("userPhone", number);
     setUserPhone(number); 
 
@@ -112,7 +114,7 @@ const Modal = ({ showModal, closeModal, onSuccess }) => {
             {otpSection && <div className="otp-section">
               <h2>OTP sent to +91{number}</h2>
 
-              <OtpInput length={4} onOtpSubmit={onOtpSubmit} />
+              <OtpInput length={4} onOtpSubmit={onOtpSubmit} setShowContinuebtn={setShowContinuebtn} setCurrOtp={setCurrOtp} />
               <p>Resend OTP on:</p>
               <div className="otp-device">
                 <span><i className="fa-solid fa-mobile"></i> SMS</span> <span><i className="fa-solid fa-phone"></i> Call</span>
@@ -120,6 +122,8 @@ const Modal = ({ showModal, closeModal, onSuccess }) => {
             </div>}
             <div>
               {number && number.length >= 10 && !otpSection ? <button className="subscribe-btn" onClick={()=>setOtpSection(true)}>GET OTP  <i class="fa-solid fa-angle-right"></i></button> : ''}
+              { otpSection && showContinuebtn ? <button className="subscribe-btn" onClick={()=>onOtpSubmit(currOtp)}>Continue  <i class="fa-solid fa-angle-right"></i></button> : ''}
+
               <p>Having trouble logging in? <a href="https://help.jiohotstar.com/in/en/support/search?term=login" target="_blank">Get Help</a></p>
             </div>
           </div>

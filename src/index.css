@@ -9,3 +9,31 @@ body{
   color: aliceblue;
 }
 body, html { overflow-x: hidden; }
+
+.loading{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.loader {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: conic-gradient(
+    #eb0066,
+    #0860c4,
+    #1492ff,
+    transparent 70%
+  );
+  mask: radial-gradient(farthest-side, transparent 65%, #000 66%);
+  -webkit-mask: radial-gradient(farthest-side, transparent 65%, #000 66%);
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+} 

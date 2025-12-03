@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import './OtpInput.css'
 
-function OtpInput({ length, onOtpSubmit }) {
+function OtpInput({ length,onOtpSubmit, setShowContinuebtn, setCurrOtp }) {
     const [otp, setOtp] = useState(new Array(length).fill(''))
     const inputRef = useRef([])
     // console.log(inputRef.current)
@@ -18,9 +18,12 @@ function OtpInput({ length, onOtpSubmit }) {
         const newotp = [...otp]
         newotp[index] = value.substring(value.length - 1)
         setOtp(newotp)
-
+        
         const combinedotp = newotp.join('')
-        if (combinedotp.length === length) onOtpSubmit(combinedotp)
+        console.log(combinedotp)
+        setCurrOtp(combinedotp)
+        if (combinedotp.length === length) {setShowContinuebtn(true)}else setShowContinuebtn(false)
+            if(combinedotp.length===length && e.key==='Enter') onOtpSubmit(combinedotp)
 
         if (value && index < length - 1) {
             inputRef.current[index + 1].focus();
