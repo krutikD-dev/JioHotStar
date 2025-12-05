@@ -136,6 +136,7 @@
     position: absolute;
     font-size: 24px;
     color: #8f98b2;
+    cursor: pointer;
 }
 
 .otp-section>h2{
@@ -172,5 +173,13 @@
   .modal-overlay{
     padding: 22px;
   }
+}
+.backBtn{
+  font-size: 0.875rem;
+  background: transparent;
+  border: none;
+  color: #8f98b2;
+  margin-bottom: .5rem;
+  cursor: pointer;
 }
 

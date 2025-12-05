@@ -88,6 +88,10 @@
   cursor: pointer;
   color: #fff;
   background: linear-gradient(92.7deg, #1492ff 0%, #0860c4 50%, #eb0066 100%);
+transition: transform 0.3s ease-in-out;
+}
+.login-btn:hover{
+  transform: scale(1.03); 
 }
 .myspace-container {
   position: relative;
@@ -128,8 +132,7 @@
   font-size: 1.1rem;
   font-weight: 600;
   width: 21.7rem;
-} 
-
+}
 
 .help-btn-small {
   background: #1c1f2a;
@@ -159,8 +162,6 @@
 
 }
 
-
-
 .avatar-initial {
   color: #fff;
   font-size: 18px;
@@ -183,6 +184,10 @@
   border-radius: 8px;
   font-weight: 600;
   /* width: 220px; */
+  transition: transform 0.3s ease-in-out;
+}
+.subscribe-btn:hover{
+  transform: scale(1.03); 
 }
 
 .help-btn-small {

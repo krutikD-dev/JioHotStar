@@ -23,6 +23,10 @@ export default function MySpace() {
     }
   }, [])
 
+  const handleClose =()=>{
+    setShowModal(false)
+  }
+
   const handleLoginSuccess = (phone) => {
     // setIsLoggedIn(true)
     setUserPhone(phone)
@@ -114,7 +118,7 @@ export default function MySpace() {
 
       <Modal
         showModal={showModal}
-        closeModal={() => setShowModal(false)}
+        closeModal={handleClose}
         onSuccess={handleLoginSuccess}
       />
     </div>

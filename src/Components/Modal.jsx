@@ -33,21 +33,29 @@ const Modal = ({ showModal, closeModal, onSuccess }) => {
     }
   };
 
-  const onOtpSubmit = (otp) => {
-  if (otp === "1111") {
-    // localStorage.setItem("isLoggedIn", "true");
-
-    localStorage.setItem("userPhone", number);
-    setUserPhone(number); 
-
-    onSuccess(number);
+  function close() {
+    closeModal()
+    setOtpSection(false)
   }
-};
+
+  const onOtpSubmit = (otp) => {
+    if (otp === "1111") {
+      // localStorage.setItem("isLoggedIn", "true");
+
+      localStorage.setItem("userPhone", number);
+      setUserPhone(number);
+
+      onSuccess(number);
+    }
+  };
+  const handleBack = () => {
+    setOtpSection(false)
+  }
 
   return (
     <div className="modal-overlay">
       <div className="modal">
-        <span className='closeIcon' onClick={closeModal}>
+        <span className='closeIcon' onClick={close}>
           <i className="fa-solid fa-xmark"></i>
         </span>
         <div className="modal-header">
@@ -75,6 +83,7 @@ const Modal = ({ showModal, closeModal, onSuccess }) => {
                   <span>+91</span>
                 </div>
                 <TextField id="outlined-basic"
+                  autoComplete="off"
                   value={number}
                   ref={inputRef}
                   slotProps={{ htmlInput: { maxLength: 10 } }}
@@ -109,9 +118,10 @@ const Modal = ({ showModal, closeModal, onSuccess }) => {
                   }} variant="outlined" />
               </div>
               <p>By proceeding you confirm that you are above 18 years of age and agree to the <a href="https://www.hotstar.com/privacy-policy/in">Privacy Policy </a> & <a href="https://hotstar.com/tnc/in">Terms of Use.</a></p>
-            </div> }
+            </div>}
 
             {otpSection && <div className="otp-section">
+              <button className='backBtn' onClick={handleBack} ><i class="fa-solid fa-arrow-left"></i> Back</button>
               <h2>OTP sent to +91{number}</h2>
 
               <OtpInput length={4} onOtpSubmit={onOtpSubmit} setShowContinuebtn={setShowContinuebtn} setCurrOtp={setCurrOtp} />
@@ -121,8 +131,8 @@ const Modal = ({ showModal, closeModal, onSuccess }) => {
               </div>
             </div>}
             <div>
-              {number && number.length >= 10 && !otpSection ? <button className="subscribe-btn" onClick={()=>setOtpSection(true)}>GET OTP  <i class="fa-solid fa-angle-right"></i></button> : ''}
-              { otpSection && showContinuebtn ? <button className="subscribe-btn" onClick={()=>onOtpSubmit(currOtp)}>Continue  <i class="fa-solid fa-angle-right"></i></button> : ''}
+              {number && number.length >= 10 && !otpSection ? <button className="subscribe-btn" onClick={() => setOtpSection(true)}>GET OTP  <i class="fa-solid fa-angle-right"></i></button> : ''}
+              {otpSection && showContinuebtn ? <button className="subscribe-btn" onClick={() => onOtpSubmit(currOtp)}>Continue  <i class="fa-solid fa-angle-right"></i></button> : ''}
 
               <p>Having trouble logging in? <a href="https://help.jiohotstar.com/in/en/support/search?term=login" target="_blank">Get Help</a></p>
             </div>
