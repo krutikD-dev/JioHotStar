@@ -12,7 +12,7 @@ const BANNER_SIZE = import.meta.env.VITE_TMDB_BANNER_SIZE;
 export default function MovieCard({ movie, onClick }) {
   const [show, setShow] = useState(false);
   const { ref, inView} = useInView({
-    threshold: 0.3,
+    threshold: 0,
   });
 
   const poster = movie.poster_path
