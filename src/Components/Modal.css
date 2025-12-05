@@ -143,10 +143,17 @@
   font-size: 18px;
   color: #E1E6F0;
   text-align: left;
+  /* margin-top: 0;
+  margin-bottom: 0; */
 }
 .otp-section>p{
   font-size: 14px;
   color: #8f98b2;
+  margin-top: 0;
+}
+
+.otp-device{
+  margin-bottom: 5px;
 }
 
 .otp-device>span{
