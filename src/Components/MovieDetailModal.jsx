@@ -13,7 +13,6 @@ const CAST_SIZE = import.meta.env.VITE_TMDB_CAST_SIZE;
 
 export default function MovieDetailModal({
   movie,
-  similarMovies = [],
   onClose
 }) {
   const [activeTab, setActiveTab] = useState("details");

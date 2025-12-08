@@ -55,7 +55,7 @@ function HomePage() {
 
   return (
     <div className="main-container">
-      <LatestUpComing />
+      {/* <LatestUpComing /> */}
 
       <HeroCarousal {...HERO_CONFIG.home} />
 
