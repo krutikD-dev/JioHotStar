@@ -70,7 +70,7 @@ export default function MySpace() {
                 <span className="avatar-initial">
                   {userPhone?.slice(-2)}
                 </span>
-                <span className="tick"><i class="fa-solid fa-check"></i></span>
+                <span className="tick"><i className="fa-solid fa-check"></i></span>
               </div>
 
               <p>User{userPhone?.slice(-2)}</p>

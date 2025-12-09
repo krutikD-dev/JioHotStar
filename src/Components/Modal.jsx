@@ -121,7 +121,7 @@ const Modal = ({ showModal, closeModal, onSuccess }) => {
             </div>}
 
             {otpSection && <div className="otp-section">
-              <button className='backBtn' onClick={handleBack} ><i class="fa-solid fa-arrow-left"></i> Back</button>
+              <button className='backBtn' onClick={handleBack} ><i className="fa-solid fa-arrow-left"></i> Back</button>
               <h2>OTP sent to +91{number}</h2>
 
               <OtpInput length={4} onOtpSubmit={onOtpSubmit} setShowContinuebtn={setShowContinuebtn} setCurrOtp={setCurrOtp} />
@@ -131,8 +131,8 @@ const Modal = ({ showModal, closeModal, onSuccess }) => {
               </div>
             </div>}
             <div>
-              {number && number.length >= 10 && !otpSection ? <button className="subscribe-btn" onClick={() => setOtpSection(true)}>GET OTP  <i class="fa-solid fa-angle-right"></i></button> : ''}
-              {otpSection && showContinuebtn ? <button className="subscribe-btn" onClick={() => onOtpSubmit(currOtp)}>Continue  <i class="fa-solid fa-angle-right"></i></button> : ''}
+              {number && number.length >= 10 && !otpSection ? <button className="subscribe-btn" onClick={() => setOtpSection(true)}>GET OTP  <i className="fa-solid fa-angle-right"></i></button> : ''}
+              {otpSection && showContinuebtn ? <button className="subscribe-btn" onClick={() => onOtpSubmit(currOtp)}>Continue  <i className="fa-solid fa-angle-right"></i></button> : ''}
 
               <p>Having trouble logging in? <a href="https://help.jiohotstar.com/in/en/support/search?term=login" target="_blank">Get Help</a></p>
             </div>

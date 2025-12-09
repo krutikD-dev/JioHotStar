@@ -38,7 +38,7 @@ export default function MoviesRow({ title, movies }) {
 
           {hover && movies.length > 0 && (
             <button className="next-scroll-btn" onClick={scrollNext}>
-              <i class="fa-solid fa-angle-right"></i>
+              <i className="fa-solid fa-angle-right"></i>
             </button>
           )}
         </div>

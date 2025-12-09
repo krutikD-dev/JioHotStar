@@ -71,7 +71,7 @@ export default function MovieDetailModal({
             </h1>
 
             <p className="modal-meta">
-              {movie.release_date?.slice(0, 4) || "N/A"} • U/A 13+ • <i class="fa-solid fa-star"></i>{" "}
+              {movie.release_date?.slice(0, 4) || "N/A"} • U/A 13+ • <i className="fa-solid fa-star"></i>{" "}
               {movie.vote_average?.toFixed(1)}
             </p>
 
