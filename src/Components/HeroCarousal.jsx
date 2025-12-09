@@ -18,7 +18,6 @@ function HeroCarousel({ fetchUrl }) {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   useEffect(() => {
-    // let active = true;
 
     const fetchData = async () => {
       try {
@@ -29,10 +28,8 @@ function HeroCarousel({ fetchUrl }) {
           axios.get(fetchUrl),
         ]);
 
-        // if (!active) return;
-
         const map = {};
-        genreRes.data.genres.forEach(g => {
+        genreRes?.data?.genres.forEach(g => {
           map[g.id] = g.name;
         });
 
@@ -46,7 +43,6 @@ function HeroCarousel({ fetchUrl }) {
     };
 
     fetchData();
-    // return () => { active = false };
   }, [fetchUrl]);
 
   const getGenres = ids =>

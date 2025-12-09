@@ -140,13 +140,6 @@ export default function MovieDetailModal({
         </div>
 
         <div className="modal-tab-content">
-          {activeTab === "similar" && (
-            <div className="similar-row">
-              {similarMovies.map((m) => (
-                <MovieCard key={m.id} movie={m} />
-              ))}
-            </div>
-          )}
 
           {activeTab === "details" && (
             <div className="details-section">
