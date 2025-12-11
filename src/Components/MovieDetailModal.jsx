@@ -150,7 +150,7 @@ export default function MovieDetailModal({
           )}
         </div>
       </div>
-        <button className="close-btn" onClick={onClose}>✕</button>
+        {/* <button className="close-btn" onClick={onClose}>✕</button> */}
     </div>
   );
 }
